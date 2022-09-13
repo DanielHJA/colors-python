@@ -1,0 +1,34 @@
+from sense_hat import SenseHat
+from time import sleep
+from random import randint
+
+sense = SenseHat()
+
+R = (198, 30, 74)       #raspberrytips red
+W = (255, 255, 255)     #white
+B = (0, 0, 255)
+Y = (255, 255, 0)
+G = (0, 128, 0)
+P = (128, 0, 128)
+#set all pixels at once
+pixels = [
+     W, W, W, P, P, P, P, P,
+     G, R, R, W, R, R, W, W,
+     G, R, R, R, R, R, R, W,
+     G, R, R, R, R, B, R, W,
+     G, R, R, R, R, R, R, W,
+     G, Y, Y, Y, Y, Y, Y, W,
+     W, W, R, R, R, W, W, W,
+     W, P, P, R, P, P, P, W
+]
+
+sense.set_pixels(pixels)
+sleep(5)
+sense.clear()
+
+#set one pixel at at time
+while True:
+        X = randint(0, 7)
+        Y = randint(0, 7)
+        sense.set_pixel(X, Y, R)
+        sleep(0.2)
